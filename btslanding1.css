@@ -1,0 +1,87 @@
+html, body{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: aliceblue;
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+div.gallery {
+    position: relative;
+    
+  }
+  
+div.gallery img {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    display: block;
+    color: none;
+ }
+
+ h1{
+    width: 500px;
+    margin-left: 380px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: underline;    
+}
+ div.heading1 h1 {
+ width: 500px;
+ margin-left: 380px;
+ margin-top: 100px;
+ text-align: center;
+ display: inline-block;
+ text-decoration: underline;
+}
+ img {
+    width: 150px;
+    height: 150px;
+}
+.sbcontent input {
+    width: 400px;
+    height: 60px;
+    float:right;
+    margin-right: 650px;
+    margin-top: 30px;
+   display: flex;
+   border-radius: 15px;
+  border:1px black solid;
+}
+.sbcontent h2 {
+    width: 200px;
+    float: left;
+    margin-left: 720px;
+    margin-top: -110px;
+    padding: 5px;
+}
+.sbcontent1 h2{
+    width:200px;
+    float:left;
+    margin-left: 850px;
+    margin-top: -110px;
+    padding: 5px;
+}
+.sbcontent h2:hover{
+    color: #fff;
+}
+.sbcontent1 h2:hover{
+    color:#fff;
+}
+
+.gallery img:hover {
+    opacity: .4;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+.shoppingcart{
+    float: right;
+    margin-right: 265px;
+    margin-top: -110px;
+}
+
