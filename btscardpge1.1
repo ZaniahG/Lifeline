@@ -1,0 +1,29 @@
+
+// Function to handle file upload
+function handleFileUpload(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+        const imageSrc = e.target.result;
+        displayPhotocard(imageSrc);
+    };
+    
+    reader.readAsDataURL(file);
+}
+
+// Function to display the uploaded photocards
+function displayPhotocard(imageSrc) {
+    const container = document.querySelector('.btscontainer');
+    const img = document.createElement('img');
+    img.src = imageSrc;
+    container.appendChild(img);
+    
+    // Run your scripts here after adding the photocard
+    // For example:
+    // alert('Photocard added!');
+}
+
+// Event listener for file input
+const fileInput = document.getElementById('photocardInput');
+fileInput.addEventListener('change', handleFileUpload);
