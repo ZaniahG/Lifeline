@@ -1,34 +1,103 @@
-html, body{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: aliceblue;
-
-}
-
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
-div.btscontainer {
-    position: relative;
-    
-  }
-  
-div.btscontainer img {
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-    display: block;
-    color: none;
- }
- h1{
-    width: 500px;
-    margin-left: 380px;
+
+body { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: aliceblue;
+}
+div.heading1 h1 {
+    width: 400px;
+    margin-left: 420px;
+    margin-top: -200px;
     text-align: center;
     display: inline-block;
+    text-decoration: underline;
+   }
+.sbcontent a img{
+    margin-top: -75px;
 }
-img {
-    width: 150px;
-    height: 150px;
+
+.sbcontent input {
+    width: 400px;
+    height: 60px;
+    float:right;
+    margin-right: 520px;
+    margin-top: 16px;
+   display: flex;
+   border-radius: 15px;
+  border:2px black solid;
 }
+.shoppingcart{
+    float: right;
+    margin-right: 400px;
+    margin-top: -165px;
+}
+div.btscontainer { 
+    max-width: 400px;
+    height: 200px;
+    width:250px;
+    background: white;
+    padding: 55px;
+    border-radius: 30px;
+    margin-left: 100px;
+}
+div.btscontainer1 { 
+    max-width: 400px;
+    height: 200px;
+    width:250px;
+    background: white;
+    padding: 55px;
+    border-radius: 30px;
+    margin-left: 500px;
+    margin-top: -195px;
+}
+div.btscontainer2 { 
+    max-width: 400px;
+    height: 200px;
+    width: 250px;
+    background: white;
+    padding: 55px;
+    border-radius: 30px;
+    margin-left: 920px;
+    margin-top: -200px;
+}
+div.btscontainer3 { 
+    max-width: 400px;
+    height: 200px;
+    width:250px;
+    background: white;
+    padding: 55px;
+    border-radius: 30px;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+div.btscontainer4 { 
+    max-width: 400px;
+    height: 200px;
+    width:250px;
+    background: white;
+    padding: 55px;
+    border-radius: 30px;
+    margin-left: 500px;
+    margin-top: -200px
+}
+div.btscontainer5 { 
+    max-width: 400px;
+    height: 200px;
+    width: 250px;
+    background: white;
+    padding: 55px;
+    border-radius: 30px;
+    margin-left: 920px;
+    margin-top: -200px;
+}
+
