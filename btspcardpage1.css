@@ -120,56 +120,7 @@ div.btscontainer {
     border-radius: 30px;
     margin-left: 100px;
 }
-div.btscontainer1 { 
-    max-width: 400px;
-    height: 200px;
-    width:250px;
-    background: white;
-    padding: 55px;
-    border-radius: 30px;
-    margin-left: 500px;
-    margin-top: -195px;
-}
-div.btscontainer2 { 
-    max-width: 400px;
-    height: 200px;
-    width: 250px;
-    background: white;
-    padding: 55px;
-    border-radius: 30px;
-    margin-left: 920px;
-    margin-top: -200px;
-}
-div.btscontainer3 { 
-    max-width: 400px;
-    height: 200px;
-    width:250px;
-    background: white;
-    padding: 55px;
-    border-radius: 30px;
-    margin-left: 100px;
-    margin-top: 50px;
-}
-div.btscontainer4 { 
-    max-width: 400px;
-    height: 200px;
-    width:250px;
-    background: white;
-    padding: 55px;
-    border-radius: 30px;
-    margin-left: 500px;
-    margin-top: -200px
-}
-div.btscontainer5 { 
-    max-width: 400px;
-    height: 200px;
-    width: 250px;
-    background: white;
-    padding: 55px;
-    border-radius: 30px;
-    margin-left: 920px;
-    margin-top: -200px;
-}
+
 .select-image {
     display: block;
     width: 100%;
