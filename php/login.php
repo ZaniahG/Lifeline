@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach ($users as $user) {
         if ($user['username'] == $username && password_verify($password, $user['password'])) {
             $_SESSION['username'] = $username;
-            header("Location: gallery.php");
+            header("Location: btspcardpage.php");
             exit();
         }
     }

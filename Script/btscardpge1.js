@@ -68,3 +68,4 @@ document.querySelectorAll('.imageUpload').forEach((input, index) => {
         }
     });
 });
+

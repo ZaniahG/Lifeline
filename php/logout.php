@@ -2,6 +2,6 @@
 <?php
 session_start();
 session_destroy();
-header("Location: gallery.php");
+header("Location: btspcardpage.php");
 exit();
 ?>

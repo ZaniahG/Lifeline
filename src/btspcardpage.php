@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html>
-<link rel="stylesheet" type="text/css" href="btspcardpage1.css">
+<link rel="stylesheet" href="/Style/btspcardpage1.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
 
 <div class="sbcontent">
     <a target="_blank" href="Lifeline1.html">
-    <img src="c:\Users\gzani\Downloads\LifeLine Logo 1.png" width="20%"></a>
+    <img src="e:\MAMP\htdocs\photos\LifeLine Logo 1.png" width="20%"></a>
     <input type="search" id="search" placeholder="Search">
 <div class="shoppingcart">
         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="none" viewBox="0 0 24 24">
@@ -70,7 +70,6 @@
 
 <div class="Jungkookheader"></div>
 
-<script src="btscardpge1.js"></script>
 
 
 </body>

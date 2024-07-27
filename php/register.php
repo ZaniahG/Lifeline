@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/btspcardpage1.css" type="text/css">
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];

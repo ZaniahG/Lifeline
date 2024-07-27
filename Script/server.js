@@ -11,4 +11,4 @@ app.get('/s3Url', async (req, res) => {
   res.send({url})
 })
 
-app.listen(8080, () => console.log("listening on port 8080"))
+app.listen(8080, () => console.log("listening on port 8088"))
