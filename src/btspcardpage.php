@@ -1,76 +1,143 @@
-<!DOCTYPE html>
+@extends('layouts.app')
 
-<html>
-<link rel="stylesheet" href="/Style/btspcardpage1.css" type="text/css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</html>
+@section('content')
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
 
-<div class="sbcontent">
-    <a target="_blank" href="Lifeline1.html">
-    <img src="e:\MAMP\htdocs\photos\LifeLine Logo 1.png" width="20%"></a>
-    <input type="search" id="search" placeholder="Search">
-<div class="shoppingcart">
-        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
-          </svg>
-          
-</div>
-<body>
-<div class="heading1">
-    <h1>Your Current Photocards</h1>
+                @php
+                    $i = '00';
+                @endphp
+                <img id="preview_{{ $i }}" class="img-fluid card-img-top"
+                    style="width: 100%; height: 200px; cursor: pointer;object-fit:cover;"
+                    onclick="triggerFileInput(`{{ $i }}`)" src="{{ asset($idolImage->getIdolProfileImage()) }}">
+                <form id="uploadForm_{{ $i }}" enctype="multipart/form-data" data-url="{{ route('idol.upload') }}">
+                    @csrf
+                    <input type="file" name="photocard" class="form-control-file" id="fileInput_{{ $i }}"
+                        style="display: none;" onchange="previewImage(`{{ $i }}`)">
+                    <input type="hidden" name="photocard_id" value="{{ $i }}">
+                </form>
+                <div class="card-body">
+                    <a href="javascript:void(0)" class="card-title text-decoration-none text-dark" data-size="md"
+                        data-url="{{ route('edit.idol.name') }}" data-ajax-popup="true"
+                        data-title="{{ __('Update Idol Name') }}">
+                        <h5>{{ $idolImage->idol_name }} <i class="fa-solid fa-pen-to-square"></i></h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h3 class="mx-auto mx-lg-0 text-center text-lg-left mt-3">Your Current Photocards</h3>
+            <div class="row">
+                @php
+                    $gallery = $idolImage->gallery_images;
+                @endphp
+                @for ($i = 0; $i < 6; $i++)
+                    @php
+                        if (isset($gallery[$i])) {
+                            $path = asset('storage/app/public/' . $gallery[$i]);
+                        } else {
+                            $path = asset('storage/app/public/avatar.png');
+                        }
+                    @endphp
+                    <div class="col-md-4">
+                        <div class="card text-center mb-3">
+                            <div class="card-body">
+                                <!-- Image preview -->
+                                <img id="preview_{{ $i }}" src="{{ $path }}" alt="Photocard"
+                                    class="img-fluid mb-3"
+                                    style="width: 100%; height: 200px; cursor: pointer;object-fit:cover;"
+                                    onclick="triggerFileInput(`{{ $i }}`)">
+
+                                <div class="d-flex justify-content-between">
+                                    <!-- Image Upload Form -->
+                                    <div class="flex-grow-1">
+                                        <form id="uploadForm_{{ $i }}" enctype="multipart/form-data"
+                                            data-url="{{ route('photocard.upload') }}">
+                                            @csrf
+                                            <input type="file" name="photocard" class="form-control-file"
+                                                id="fileInput_{{ $i }}" style="display: none;"
+                                                onchange="previewImage(`{{ $i }}`)">
+                                            <input type="hidden" name="photocard_id" value="{{ $i }}">
+                                            <button type="button"
+                                                class="btn btn-primary btn-sm w-100 upload-btn-{{ $i }}"
+                                                onclick="triggerFileInput(`{{ $i }}`)">Upload Image</button>
+                                        </form>
+                                    </div>
+
+                                    @if (isset($gallery[$i]))
+                                        <div class="ml-1">
+                                            <!-- Delete Button -->
+                                            <form method="GET" action="{{ route('photocard.delete', $i) }}">
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    @endif
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                @endfor
+            </div>
+
+
+        </div>
     </div>
-
-
-    
-<div class="RMheader"></div>
-<div class="btscontainer">
-    <?php
-    session_start();
-    
-    // Check if user is logged in
-    if (isset($_SESSION['username'])) {
-        echo '<p>Welcome, ' . htmlspecialchars($_SESSION['username']) . '! <a href="logout.php">Logout</a></p>';
-        include 'upload.php';
-    } else {
-        // Include login form
-        echo '<p><a href="register.php">Register</a> | <a href="login.php">Login</a></p>';
-        include 'login.php';
-    }
-    ?>
-</div>
-<div>
-    <div class="btscontainer">
-        <?php
-        // Display images if user is logged in
-        if (isset($_SESSION['username'])) {
-            $images = json_decode(file_get_contents('images.json'), true);
-            foreach ($images as $image) {
-                echo "<div class='img-area'><img src='" . htmlspecialchars($image['s3_url']) . "' width='200'><br></div>";
-            }
+@endsection
+@push('custom-scripts')
+    <script>
+        // Trigger hidden file input when the image is clicked
+        function triggerFileInput(id) {
+            document.getElementById(`fileInput_${id}`).click();
         }
-        ?>
-    </div>
-</div>
-</div>
 
-<div class="Jinheader"></div>
+        // Preview selected image before upload
+        function previewImage(id) {
+            console.log(id);
+            var fileInput = document.querySelector(`#uploadForm_${id} input[type="file"]`);
+            var preview = document.getElementById(`preview_${id}`);
+            var file = fileInput.files[0];
+            var reader = new FileReader();
 
+            reader.onloadend = function() {
+                preview.src = reader.result;
+            }
 
+            if (file) {
+                reader.readAsDataURL(file); // Reads the file and triggers onloadend
+                uploadImage(id);
+            }
+            // else {
+            //     preview.src = "{{ asset('path-to-placeholder-image.jpg') }}"; // Placeholder
+            // }
+        }
 
-<div class="Jhopeheader"></div>
+        // Upload image via AJAX
+        function uploadImage(id) {
+            var formData = new FormData(document.getElementById(`uploadForm_${id}`));
+            $(".upload-btn-" + id).prop('disabled', true);
+            showToast("Uploading....", 'success', 'bottom-center');
 
-<div class="Jiminheader"></div>
-
-
-<div class="Vheader"></div>
-
-<div class="Sugaheader"></div>
-
-<div class="Jungkookheader"></div>
-
-
-
-</body>
-</div>
+            $.ajax({
+                url: $(`#uploadForm_${id}`).data("url"),
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    $(".upload-btn-" + id).prop('disabled', false);
+                    showToast(response.success, 'success', 'bottom-center');
+                },
+                error: function(response) {
+                    $(".upload-btn-" + id).prop('disabled', false);
+                    showToast("Failed to upload image", 'error', 'bottom-center');
+                }
+            });
+        }
+    </script>
+@endpush
